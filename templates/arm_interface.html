@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Robotic Arm Control</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5">Robotic Arm Control</h1>
+        <div class="mt-4">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="alert alert-{{ messages[0][0] }}">
+                        {{ messages[0][1] }}
+                    </div>
+                {% endif %}
+            {% endwith %}
+        </div>
+        <div class="btn-group-vertical">
+            <a href="{{ url_for('move_shoulder_up') }}" class="btn btn-primary">Move Shoulder Up</a>
+            <a href="{{ url_for('move_shoulder_down') }}" class="btn btn-primary">Move Shoulder Down</a>
+            <a href="{{ url_for('expand_elbow') }}" class="btn btn-primary">Expand Elbow</a>
+            <a href="{{ url_for('close_elbow') }}" class="btn btn-primary">Close Elbow</a>
+            <a href="{{ url_for('open_gripper') }}" class="btn btn-primary">Open Gripper</a>
+            <a href="{{ url_for('close_gripper') }}" class="btn btn-primary">Close Gripper</a>
+            <a href="{{ url_for('expand_arm') }}" class="btn btn-primary">Expand Arm</a>
+            <a href="{{ url_for('close_arm') }}" class="btn btn-primary">Close Arm</a>
+        </div>
+    </div>
+</body>
+</html>

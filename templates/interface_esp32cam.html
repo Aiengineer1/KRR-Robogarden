@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32-CAM Control Panel</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">ESP32-CAM Control Panel</h1>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <form action="/stream_on" method="GET">
+                    <button type="submit" class="btn btn-success btn-block">Start Stream</button>
+                </form>
+            </div>
+            <div class="col-md-4 mb-3">
+                <form action="/stream_off" method="GET">
+                    <button type="submit" class="btn btn-danger btn-block">Stop Stream</button>
+                </form>
+            </div>
+            <div class="col-md-4 mb-3">
+                <form action="/snapshot" method="GET">
+                    <button type="submit" class="btn btn-primary btn-block">Take Snapshot</button>
+                </form>
+            </div>
+        </div>
+        <div class="text-center mt-3">
+            <a href="{{ url_for('live_stream') }}" class="btn btn-info">Show Live Stream</a>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
